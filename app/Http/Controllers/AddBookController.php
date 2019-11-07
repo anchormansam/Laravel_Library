@@ -33,6 +33,7 @@ class AddBookController extends Controller
         return view('create',['flash'=>'Book Added']);
  
     }
+    
  
 }
 
