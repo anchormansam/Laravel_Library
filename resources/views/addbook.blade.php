@@ -5,7 +5,7 @@
 
 <h2>Book Queue</h2>
  
- <form method="post" action="/addbook" enctype="multipart/form-data">
+ <form method="post" action="addbook/create" enctype="multipart/form-data">
      {{ csrf_field() }}
      <div class="form-group row">
          <label for="titleid" class="col-sm-3 col-form-label">Book Title</label>
@@ -27,18 +27,7 @@
                     placeholder="Can I Checkout this book?">
          </div>
      </div>
-    
-     <!-- <div class="form-group row">
-         <div class="offset-sm-3 col-sm-9">
-             <button type="submit" class="btn btn-primary">Checkout Book</button>
-         </div>
-     </div> -->
-     <div class="form-group row">
-         <div class="offset-sm-3 col-sm-9">
-             <button type="submit" class="btn btn-primary">Add to Library</button>
-         </div>
-     </div>
- </form>
+
 
 @endsection 
 

@@ -86,13 +86,9 @@
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Locations</a>
-                    <a href="{{ url('/addbook') }}">Book Checkout</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://laracasts.com">Meet our Librarian</a>
-                    <a href="https://nova.laravel.com">Calendar Of Events</a>
-                    
-                    <!-- <a href="https://github.com/laravel/laravel">GitHub</a> -->
+                    <a href="{{ url('/addbook') }}">Add Books to Library</a>
+                    <a href="{{ url('/checkout') }}">Books to Checkout</a>
+                  
                 </div>
             </div>
         </div>
