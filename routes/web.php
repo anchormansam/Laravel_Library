@@ -14,6 +14,8 @@ Route::post('/addbook', 'AddBookController@store');
 Route::get('/bookview/{title}', 'BookviewController@viewbook');
 Route::get('/checkout', 'CheckoutController@index');
 Route::post('/bookview/checkout', 'CheckoutController@checkout');
+Route::post('/bookview/update', 'CheckoutController@update');
+
 // Route::post('/bookview/checkout', 'CheckoutController@destroy');
 
 

@@ -26,7 +26,7 @@ class CheckoutController extends Controller
     }
 
     public function checkout(Request $request){
-
+        
         $id = Auth::user()->id;
         $checkedbook = Checkedout::create([
             'user_id' => $id,
@@ -46,8 +46,18 @@ class CheckoutController extends Controller
 
     }
 
-    public function update(){
-       
+    public function update(Request $request){
+        $id = Auth::user()->id;
+        $checkedbook = Checkedout::destroy($request['book_id']);
+ 
+        $update = Book::find($request['book_id']);
+        $update->available = 1;
+
+        $update->save();
+        
+        $books = Book::all();
+        
+        return view('/checkout', ['books' => $books]);
 
 
     }
