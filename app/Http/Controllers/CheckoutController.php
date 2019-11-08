@@ -5,16 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use App\Book;
 use App\Checkedout;
 
 class CheckoutController extends Controller
 {
     public function index(){
-
-        $books = DB::select('select * from books');
+        if(Auth::User()->librarian){
+            
+            $books = Book::all();
+        }
+        else {
+          
+            $books = Book::where('available', 1)->get();
+        }
+       
         
         return view ('/checkout', ['books' => $books]);
-        // $books = array("G", "D", "E", "F");
+      
     }
 
     public function checkout(Request $request){
@@ -25,22 +33,23 @@ class CheckoutController extends Controller
             'book_id' => $request['book_id'],
             
         ]);
- 
         $checkedbook->save();
+ 
+        $update = Book::find($request['book_id']);
+        $update->available = 0;
+
+        $update->save();
         
-        $books = DB::select('select * from books');
+        $books = Book::all();
         
         return view('/checkout', ['books' => $books]);
 
     }
 
-    // public function destroy(Request $request){
-    //     $grabid = 
+    public function update(){
+       
 
 
-
-    //     $book_id->delete();
-    //     return view('/checkout', ['books' => $books]);
-    // }
+    }
 
 }

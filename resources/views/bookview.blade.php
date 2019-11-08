@@ -4,7 +4,7 @@
 
 @section('content')
 
-@if(Auth::User()->librarian)
+<!-- @if(Auth::User()->librarian) -->
 
 <h1> {{ $book[0]->title }} </h1>
 
@@ -40,6 +40,6 @@
              </form>
          </div>
      </div>
-@endif
+<!-- @endif -->
 
 @endsection

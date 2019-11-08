@@ -13,17 +13,17 @@ class Checkedout extends Migration
      */
     public function up()
     {
-        Schema::create('checkedout', function (Blueprint $table) {
+        Schema::create('checkedouts', function (Blueprint $table) {
         $table->bigIncrements('id');
         $table->unsignedBigInteger('user_id');
-        $table->unsignedBigInteger('books_id');
+        $table->unsignedBigInteger('book_id');
         $table->timestamps();
         
         $table->foreign('user_id')
         ->references('id')->on('users');
         // ->onDelete('cascade');
         
-        $table->foreign('books_id')
+        $table->foreign('book_id')
         ->references('id')->on('books');
     });
       
