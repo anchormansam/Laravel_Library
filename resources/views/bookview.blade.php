@@ -4,7 +4,6 @@
 
 @section('content')
 
-<!-- @if(Auth::User()->librarian) -->
 
 <h1> {{ $book[0]->title }} </h1>
 
@@ -25,21 +24,24 @@
             <td>
                 {{ $book[0]->description }}
             </td>
+
         </tr>
     </tbody>
 
 </table>
 
-    <div class="form-group row">
-         <div class="offset-sm-3">
-            <form method="POST" action="checkout">
-             @csrf
-                <input type="hidden" name="book_id" value="{{ $book[0]->id }}" />
-            
-                <input type="submit" type="submit" class="btn btn-primary" value="Checkout" />
-             </form>
-         </div>
-     </div>
-<!-- @endif -->
 
+    @if(Auth::User() != null)
+        <div class="form-group row">
+            <div class="offset-sm-3">
+                <form method="POST" action="checkout">
+                    @csrf
+                         <input type="hidden" name="book_id" value="{{ $book[0]->id }}" />
+                         <input type="submit" type="submit" class="btn btn-primary" value="Checkout" />
+                </form>
+            </div>
+        </div>
+    @endif
+
+   
 @endsection

@@ -11,18 +11,18 @@ use App\Checkedout;
 class CheckoutController extends Controller
 {
     public function index(){
-        if(Auth::User()->librarian){
-            
-            $books = Book::all();
+        $books=[];
+        if(Auth::user() != null){
+            if(Auth::user()->librarian){
+                $books = Book::all();
+            } 
         }
-        else {
-          
+        if(count($books)==0) {
             $books = Book::where('available', 1)->get();
+
         }
        
-        
         return view ('/checkout', ['books' => $books]);
-      
     }
 
     public function checkout(Request $request){

@@ -81,14 +81,24 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                East Laravel County Public Library
+                    East Laravel County Public Library
                 </div>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Locations</a>
-                    <a href="{{ url('/addbook') }}">Add Books to Library</a>
+
+                 @if(Route::has('login'))  
+                    @auth
+                    @if(Auth::User()->librarian)
+                        <a href="{{ url('/addbook') }}">Add Books to Library</a>
+                    @endif
+                    @endauth
+                @endif
+
+              
                     <a href="{{ url('/checkout') }}">Books to Checkout</a>
-                  
+              
+
                 </div>
             </div>
         </div>
